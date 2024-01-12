@@ -28,7 +28,11 @@ class ClickSendConfig
 
     public function configurationValid(): bool
     {
-        return !(is_null($this->getUsername()) || is_null($this->getPassword()) || is_null($this->getApiEndpoint());
+        return !(
+            is_null($this->getUsername()) ||
+            is_null($this->getPassword()) ||
+            is_null($this->getApiEndpoint())
+        );
     }
 
     public function getIgnoredErrorCodes(): array
