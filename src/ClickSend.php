@@ -18,7 +18,7 @@ class ClickSend
         if (! $config->configurationValid()) {
             throw InvalidConfigException::missingConfig();
         }
-        return new ClickSendService(
+        $this->clickSend = new ClickSendService(
             $config->getUsername(),
             $config->getPassword(),
             $config->getApiEndpoint()
