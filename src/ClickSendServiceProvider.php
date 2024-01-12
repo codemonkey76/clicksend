@@ -12,7 +12,7 @@ class ClickSendServiceProvider extends ServiceProvider
 
     public function boot() {}
 
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/clicksend-notification-channel.php', 'clicksend-notification-channel');;
 
