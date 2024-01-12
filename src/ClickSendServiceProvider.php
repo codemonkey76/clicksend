@@ -14,7 +14,7 @@ class ClickSendServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/clicksend-notification-channel.php', 'clicksend-notification-channel');;
+        $this->mergeConfigFrom(__DIR__.'/../config/clicksend-notification-channel.php', 'clicksend-notification-channel');
 
         $this->publishes([
             __DIR__.'/../config/clicksend-notification-channel.php' => config_path('clicksend-notification-channel.php')
@@ -23,8 +23,6 @@ class ClickSendServiceProvider extends ServiceProvider
         $this->app->bind(ClickSendConfig::class, function() {
             return new ClickSendConfig($this->app['config']['clicksend-notification-channel']);
         });
-
-
 
         $this->app->singleton(ClickSend::class, function(Application $app) {
            return new ClickSend(
