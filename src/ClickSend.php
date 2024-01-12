@@ -5,11 +5,19 @@ namespace NotificationChannels\ClickSend;
 use Codemonkey76\ClickSend\SmsMessage;
 use Codemonkey76\ClickSend\ClickSendResponse;
 use Codemonkey76\ClickSend\ClickSend as ClickSendService;
+use NotificationChannels\ClickSend\Exceptions\InvalidConfigException;
 
 class ClickSend
 {
     protected ClickSendService $clickSend;
+
+    /**
+     * @throws InvalidConfigException
+     */
     public function __construct(public ClickSendConfig $config) {
+        if (! $config->configurationValid()) {
+            throw InvalidConfigException::missingConfig();
+        }
         return new ClickSendService(
             $config->getUsername(),
             $config->getPassword(),
